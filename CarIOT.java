@@ -4,6 +4,8 @@ import javax.swing.JOptionPane;
 import java.util.Random;
 
 public class CarIOT {
+    
+    //bagian instance variable untuk objek
     protected int speed;
     protected float distance;
 
@@ -43,20 +45,24 @@ public class CarIOT {
 
     // bagian marthod
 
+    //pesan ketika mobil berhasil dinyalakan.
     public void messageOn() {
         JOptionPane.showMessageDialog(null, "Mobil berhasil dinyalakan \nMobil siap digunakan");
     }
 
+    //pesan ketika mobil berhasil dimatikan.
     public void messageOff() {
         JOptionPane.showMessageDialog(null, "Mobil berhasil dimatikan \nMesin mobil mati");
     }
 
+    //untuk menghidupkan mesin
     public void turnOn() {
         JOptionPane.showMessageDialog(null, "Menyalakan mesin mobil");
         System.out.println();
         messageOn();
     }
 
+    //untuk mematikan mesin.
     public void turnOff() {
         JOptionPane.showMessageDialog(null, "Mematikan mesin mobil");
         System.out.println();
@@ -71,13 +77,16 @@ public class CarIOT {
         JOptionPane.showMessageDialog(null, "Mengerem mobil");
     }
 
+    //menampilkan kecepatan mobil
     public void carSpeed() {
         JOptionPane.showMessageDialog(null, "Mobil berjalan dengan kecepatan " + this.speed + " km/h");
     }
 
     public void autoBrake() {
+        //menampilkn jarak mobil dengan mobil depannya
         JOptionPane.showMessageDialog(null, "Jarak dengan mobil depan sejauh " + this.distance + " meter");
 
+        //percabangan untuk mengecek kondisi mobil (kecepatan dan jarak)
         if (this.speed >= 200 && this.distance <= 50.0f) {
             JOptionPane.showMessageDialog(null,
                     "Kecepatan Mobil mencapai 200 km/h ke atas \nJarak dengan mobil depan kurang dari 50 meter");
@@ -106,11 +115,14 @@ class Car {
 
     protected String brand, type;
 
+    //constructor berparameter untuk menampung informasi tentang objek
     public Car(String brand, String type) {
         this.brand = brand;
         this.type = type;
     }
 
+    //bagian setter dan getter untuk 
+    //mendeklarasikan nilai dari instance variabel
     public String getBrand() {
         return brand;
     }
@@ -127,6 +139,7 @@ class Car {
         this.type = type;
     }
 
+    //method untuk memilih mobil
     public void chooseCar() {
         JOptionPane.showMessageDialog(null,
                 "Mobil dengan :\nBrand : " + this.brand + " \nTipe    : " + this.type + " \ndipilih.");
@@ -136,15 +149,19 @@ class Car {
 
 class CarIOTTestDrive {
     public static void main(String[] args) {
-
+        
+        //inisialisasi objek dari kelas CarIOT
         CarIOT ci = new CarIOT();
         Car c1 = new Car("Honda", "Civic Type-R");
+        //pemanggilan method-method dari berbagai kelas
         generateCar gc = new generateCar();
         c1.chooseCar();
         ci.turnOn();
         ci.accelerate();
         ci.carSpeed();
-        // untuk men-generate mobil di depan-nya
+        //untuk men-generate mobil di depan-nya
+        //menjalankan file generateCar.java
+        //perintah di bawah jangan dihapus atau di buat komen
         gc.main(args);
 
     }
